@@ -1,12 +1,11 @@
-
 import './App.css';
+import NavBar from './components/NavBar/NavBar'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        E-Commerce Droid9 South America
-      </header>
+      <NavBar/>
+      <h1 className="App-header">E-Commerce Droid9 South America</h1>
     </div>
   );
 }
