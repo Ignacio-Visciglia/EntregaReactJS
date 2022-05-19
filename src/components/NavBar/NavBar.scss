@@ -1,6 +1,13 @@
-.container-logo{
-    width: 10rem;
-    img{
-        width: 100%;
+.navbar{
+    ul{
+        list-style-type: none;
     }
+    background-color: black;
+    .container-logo{
+        width: 10rem;
+        img{
+            width: 100%;
+        }
+    }
+    
 }
