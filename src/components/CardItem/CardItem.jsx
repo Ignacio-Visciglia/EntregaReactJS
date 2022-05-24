@@ -1,9 +1,10 @@
 import './CardItem.scss';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
+import ItemCount from '../ItemCount/ItemCount'
 
 const CardItem = ({title, price, image}) => {
+   
     return (
         <Card>
             <CardContent>
@@ -14,7 +15,7 @@ const CardItem = ({title, price, image}) => {
                     <figcaption>
                         <p id="descripcion">{title}</p>
                         <p id="precio">${price}</p>
-                        <Button variant='contained'>ADD TO CART</Button>
+                        <ItemCount stock={5} initial={1}/>
                     </figcaption>
                 </div>
             </CardContent>

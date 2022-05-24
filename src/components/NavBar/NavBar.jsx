@@ -14,16 +14,10 @@ const NavBar = () => {
                 </div>
                 <ul>
                     <li>
-                        <Button variant='text'>Gallery</Button>
+                        <Button variant='text'>Clothing</Button>
                     </li>
                     <li>
-                        <Button>Sign up</Button>
-                    </li>
-                    <li>
-                        <Button>Log in</Button>
-                    </li>
-                    <li>
-                        <Button>Shop</Button>
+                        <Button>Accessories</Button>
                     </li>
                 </ul>
                 <Button color="inherit">Login</Button>
