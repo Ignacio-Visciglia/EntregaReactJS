@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <NavBar/>
       <div className='general-container'>
-        <ItemListContainer greeting='Products'/>
+        <ItemListContainer greeting='Droid 9 South America E commerce'/>
       </div> 
     </div>
   );

@@ -1,21 +1,27 @@
-import './CardItem.scss';
+import './Item.scss';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import ItemCount from '../ItemCount/ItemCount'
 
-const CardItem = ({title, price, image}) => {
-   
+const Item = ({ image, title, price, stock }) => {
+
+    /* const {image, title, price, stock} = item; */
+
+    const onAdd = (count) => {
+        console.log(`Cantidad de items a comprar: ${count}`)
+    }
+
     return (
         <Card>
             <CardContent>
-                <div className='card-item'>
+                <div className='item'>
                     <figure>
                         <img src={`./${image}`} alt=""/>
                     </figure>
                     <figcaption>
                         <p id="descripcion">{title}</p>
                         <p id="precio">${price}</p>
-                        <ItemCount stock={5} initial={1}/>
+                        <ItemCount stock={stock} initial={1} onAdd={onAdd}/>
                     </figcaption>
                 </div>
             </CardContent>
@@ -23,4 +29,4 @@ const CardItem = ({title, price, image}) => {
     );
 };
 
-export default CardItem;
+export default Item;
