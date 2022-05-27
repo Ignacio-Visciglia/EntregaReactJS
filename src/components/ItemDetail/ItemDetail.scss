@@ -1,0 +1,10 @@
+.itemDetail{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    figcaption{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

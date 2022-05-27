@@ -3,9 +3,9 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import ItemCount from '../ItemCount/ItemCount'
 
-const Item = ({ image, title, price, stock }) => {
+const Item = ({ item }) => {
 
-    /* const {image, title, price, stock} = item; */
+    const {image, title, price, stock} = item;
 
     const onAdd = (count) => {
         console.log(`Cantidad de items a comprar: ${count}`)
@@ -19,8 +19,8 @@ const Item = ({ image, title, price, stock }) => {
                         <img src={`./${image}`} alt=""/>
                     </figure>
                     <figcaption>
-                        <p id="descripcion">{title}</p>
-                        <p id="precio">${price}</p>
+                        <p>{title}</p>
+                        <p>${price}</p>
                         <ItemCount stock={stock} initial={1} onAdd={onAdd}/>
                     </figcaption>
                 </div>
