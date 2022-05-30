@@ -1,9 +1,9 @@
 import './NavBar.scss';
+import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import CartWidget from '../CartWidget/CartWidget'
-
+import CartWidget from '../CartWidget/CartWidget';
 
 const NavBar = () => {
     return (   
@@ -14,10 +14,14 @@ const NavBar = () => {
                 </div>
                 <ul>
                     <li>
-                        <Button variant='text'>Clothing</Button>
+                        <Button variant='text'>
+                            <Link to='/'> Home</Link>
+                        </Button>
                     </li>
                     <li>
-                        <Button>Accessories</Button>
+                        <Button>
+                            <Link to='*'>NotFound</Link>
+                        </Button>
                     </li>
                 </ul>
                 <Button color="inherit">Login</Button>
