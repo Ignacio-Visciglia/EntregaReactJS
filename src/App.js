@@ -4,7 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import NotFound from './pages/NotFound';
-import ProductListContainer from './pages/ProductListContainer';
+import ProductListContainer from './components/ProductListContainer/ProductListContainer';
 
 
 function App() {
