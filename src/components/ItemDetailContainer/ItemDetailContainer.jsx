@@ -1,33 +1,25 @@
 import { useState, useEffect } from 'react';
-import ItemDetail from '../ItemDetail/ItemDetail'
-import { producto } from '../../utils/productsMock'
+import ItemDetail from '../ItemDetail/ItemDetail';
+import items from '../../utils/productsMock';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const ItemDetailContainer = () => {
 
-    const [item, setItem] = useState({})
-
-    const getItem = () => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(producto);
-            },2000);
-        });
-    };
-
-    async function getItemAsync(){
-        try{
-            const data = await getItem();
-            setItem(data);
-        } catch(err){
-            console.log(err);
-        } finally{
-            console.log('Finally');
-        }
-    }
+    const [item, setItem] = useState({});
+    const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        getItemAsync();
+        if(productFilter === undefined){
+            navigate('/NotFound');
+        } else {
+            setItem(productFilter);
+        }
     }, []);
+
+    const productFilter = items.find( (item) => {
+        return item.id == id;
+    })
 
     return(
         <>

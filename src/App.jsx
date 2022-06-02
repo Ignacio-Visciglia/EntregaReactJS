@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import NotFound from './pages/NotFound';
+import ProductListContainer from './pages/ProductListContainer';
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
         <NavBar/> 
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/product/:id' element={<Detail/>}/>
+          <Route path='/item/:id' element={<Detail/>}/>
+          <Route path='/category/:categoryId' element={<ProductListContainer/>}/>
           <Route path='*' element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>

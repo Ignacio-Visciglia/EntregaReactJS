@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid'
 
 const ItemList = ({items}) => {
     return (
-        <>
           <Grid container>
             {
               items.map( ( item/* , index */) => {
@@ -17,7 +16,6 @@ const ItemList = ({items}) => {
               })
             }
           </Grid>
-        </>
       );
 };
 

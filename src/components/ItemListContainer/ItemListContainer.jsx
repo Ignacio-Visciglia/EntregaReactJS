@@ -19,7 +19,6 @@ const ItemListContainer = ({greeting}) => {
     async function getProductsAsincrono() {
         try{
             const data = await getProducts();
-            console.log("Try productos asincrono", data);
             setProducts(data);
         } catch(err){
             console.log("Catch Async");

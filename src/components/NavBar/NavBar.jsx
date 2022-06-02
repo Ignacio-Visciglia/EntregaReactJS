@@ -1,22 +1,63 @@
 import './NavBar.scss';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import CartWidget from '../CartWidget/CartWidget';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 const NavBar = () => {
+
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const categories = ['Clothing', 'Bazaar']
+
     return (   
         <AppBar position="static">
             <Toolbar className="navbar">
                 <div className='container-logo'>
-                    <img src="./logoDroid9SouthAmerica.png" alt="Logo" />
+                    <Link to='/'>
+                        <img src="/logoDroid9SouthAmerica.png" alt="Logo" />
+                    </Link>
                 </div>
                 <ul>
                     <li>
                         <Button variant='text'>
                             <Link to='/'> Home</Link>
                         </Button>
+                    </li>
+                    <li>
+                        <Button
+                            id="basic-button"
+                            aria-controls={open ? 'basic-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            onClick={handleClick}
+                        >
+                            Products
+                        </Button>
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                            }}
+                        >
+                            {categories.map( (cat, index) => {
+                                return <MenuItem key={index} onClick={handleClose}><Link to={`/category/${cat}`}>{cat}</Link></MenuItem>
+                            })}
+                        </Menu>
                     </li>
                     <li>
                         <Button>
