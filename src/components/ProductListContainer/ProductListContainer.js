@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
 import items from '../../utils/productsMock';
+import Loading from '../Loading/Loading';
 
 const ProductListContainer = () => {
 
     const { categoryId } = useParams();
 
+    const [loader, setLoader] = useState(false);
     const [products, setProducts] = useState([]);
 
 
@@ -25,11 +27,12 @@ const ProductListContainer = () => {
         } catch(err){
             console.log("Catch Async");
         } finally{
-            console.log("Finally Async")
+            setLoader(false);
         }
     }
 
     const filterByCategory = (array) => {
+        setProducts([]);
         return array.map( (item) => {
             if(item.category == categoryId) {
                 return setProducts(products => [...products, item])
@@ -38,12 +41,21 @@ const ProductListContainer = () => {
     }
 
     useEffect( () => {
-        setProducts([]);
+        setLoader(true)
         getProductsAsincrono();
     }, [categoryId]);
 
     return(
-        <ItemList items={products}/>
+        <>
+            {
+                (loader)
+                ?
+                (<Loading/>)
+                :
+                <ItemList items={products}/>
+            }
+        </>
+        
     )
 }
 

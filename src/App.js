@@ -6,7 +6,6 @@ import Detail from './pages/Detail';
 import NotFound from './pages/NotFound';
 import ProductListContainer from './components/ProductListContainer/ProductListContainer';
 
-
 function App() {
   return (
     <div className="App">

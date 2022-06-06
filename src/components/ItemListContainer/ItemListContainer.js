@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import ItemList from '../ItemList/ItemList'
-import items from '../../utils/productsMock'
+import ItemList from '../ItemList/ItemList';
+import items from '../../utils/productsMock';
+import Loading from '../Loading/Loading';
 
 const ItemListContainer = ({greeting}) => {
 
-  /* const [loader, setLoader] = useState(false); */
+  const [loader, setLoader] = useState(false);
   const [products, setProducts] = useState([]);
 
     const getProducts = () => {
@@ -23,14 +24,14 @@ const ItemListContainer = ({greeting}) => {
         } catch(err){
             console.log("Catch Async");
         } finally{
-            console.log("Finally Async")
+            setLoader(false);
         }
     }
 
     useEffect( () => {
-    /* abro el Loader
+    //Abro el Loader
     setLoader(true);
-    getProducts()
+    /* getProducts()
     .then( (response) => {
     console.log('Then:', response);
     })
@@ -41,16 +42,24 @@ const ItemListContainer = ({greeting}) => {
     setLoader(false);
     Cierro el loader. Lo cierro en finally porque sino debería llamarlo tanto en then como en catch, ya que podria ir por cualquiera, en cambio finally siempre se ejecuta.
     console.log(`Finally`);
-    })
-    */
+    }) */
+   
     getProductsAsincrono();
     }, []);
     //Esto lo hace en Fase Montaje de su ciclo de vida
 
     return(
       <>
-        <div>{greeting}</div>
-        <ItemList items={products}/>
+        {
+            (loader)
+            ?
+            (<Loading/>)
+            :
+            <>
+            <div>{greeting}</div>
+            <ItemList items={products}/>
+            </>
+        }
       </>
     )
 };
