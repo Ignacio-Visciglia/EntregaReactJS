@@ -15,7 +15,7 @@ const ItemDetailContainer = () => {
         } else {
             setItem(productFilter);
         }
-    }, []);
+    }, [id]);
 
     const productFilter = items.find( (item) => {
         return item.id == id;
