@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
-import items from '../../utils/productsMock';
 import Loading from '../Loading/Loading';
+import getProducts from '../../functions/getProducts';
 
 const ProductListContainer = () => {
 
@@ -10,15 +10,6 @@ const ProductListContainer = () => {
 
     const [loader, setLoader] = useState(false);
     const [products, setProducts] = useState([]);
-
-
-    const getProducts = () => {
-        return new Promise( (resolve, reject) =>{
-            setTimeout( () => {
-                resolve(items);
-            }, 2000);
-        });
-    };
 
     async function getProductsAsincrono() {
         try{

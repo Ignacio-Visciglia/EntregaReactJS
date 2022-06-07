@@ -1,20 +1,12 @@
 import { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
-import items from '../../utils/productsMock';
 import Loading from '../Loading/Loading';
+import getProducts from '../../functions/getProducts';
 
 const ItemListContainer = ({greeting}) => {
 
   const [loader, setLoader] = useState(false);
   const [products, setProducts] = useState([]);
-
-    const getProducts = () => {
-        return new Promise( (resolve, reject) =>{
-            setTimeout( () => {
-                resolve(items);
-            }, 2000);
-        });
-    };
 
     //Funciones asincronas. Reemplaza el bloque then-catch-finally
     async function getProductsAsincrono() {
