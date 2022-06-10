@@ -4,12 +4,16 @@
         display: flex;
         flex-direction: row;
     }
-    background-color: black;
     .container-logo{
         width: 10rem;
         img{
             width: 100%;
         }
-    }
-    
+    }   
+}
+.darkMode{
+    background-color: black !important;
+}
+.lightMode{
+    background-color: white !important;
 }

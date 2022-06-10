@@ -1,19 +1,22 @@
 import './ItemCount.scss';
 import Button from '@mui/material/Button';
+import { CartContext } from '../../context/CartContext';
+import { useContext } from 'react';
 
-const ItemCount = ({ stock, quantity, onAdd, setQuantity }) => {
+const ItemCount = ({ id, image, title, price, stock, quantity, onAdd, setQuantity }) => {
 
+    const { addProductToCart } = useContext(CartContext);
 
-const handleIncrease = () => {
-    if (quantity < stock){
-        setQuantity(quantity + 1);
+    const handleIncrease = () => {
+        if (quantity < stock){
+            setQuantity(quantity + 1);
+        }
     }
-}
-const handleDecrease = () => {
-    if(quantity > 1 ){
-        setQuantity(quantity - 1);
-    }       
-}
+    const handleDecrease = () => {
+        if(quantity > 1 ){
+            setQuantity(quantity - 1);
+        }       
+    }
 
     return(
         <>
@@ -22,7 +25,7 @@ const handleDecrease = () => {
                 <p>{quantity}</p>
                 <Button onClick={handleIncrease}>+</Button>
             </div>
-            <Button onClick={() => {onAdd(quantity)}} variant='outlined'>ADD TO CART</Button>
+            <Button onClick={() => {onAdd(quantity); addProductToCart({id, image, title, price, stock, quantity})}} variant='outlined'>ADD TO CART</Button>
         </>
     );
 };

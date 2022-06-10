@@ -2,22 +2,25 @@ import './Item.scss';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from '../ItemCount/ItemCount';
+import { ThemeContext } from '../../context/ThemeContext';
 
 
 const Item = ({ item }) => {
 
     const { id, image, title, price, stock } = item;
     const [quantity, setQuantity] = useState(1)
+    
+    const { darkTheme } = useContext(ThemeContext);
 
     const onAdd = (count) => {
         console.log(`Cantidad de items a comprar: ${count}`)
     }
 
     return (
-        <Card>
+        <Card className={darkTheme ? 'darkMode' : 'lightMode'}>
             <CardContent>
                 <div className='item'>
                     <figure>
@@ -29,7 +32,15 @@ const Item = ({ item }) => {
                     <figcaption>
                         <p>{title}</p>
                         <p>${price}</p>
-                        <ItemCount stock={stock} quantity={quantity} onAdd={onAdd} setQuantity={setQuantity}/>
+                        <ItemCount  id={id}
+                                    image={image}
+                                    title={title}
+                                    price={price}
+                                    stock={stock}
+                                    quantity={quantity}
+                                    setQuantity={setQuantity}
+                                    onAdd={onAdd}
+                                    />
                     </figcaption>
                 </div>
             </CardContent>

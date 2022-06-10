@@ -1,5 +1,5 @@
 import './NavBar.scss';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,9 +7,12 @@ import Button from '@mui/material/Button';
 import CartWidget from '../CartWidget/CartWidget';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
+import { ThemeContext } from '../../context/ThemeContext';
 
 const NavBar = () => {
 
+    const { darkTheme } = useContext(ThemeContext);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -19,10 +22,10 @@ const NavBar = () => {
         setAnchorEl(null);
     };
 
-    const categories = ['Clothing', 'Bazaar']
+    const categories = ['Clothing', 'Bazaar'];
 
     return (   
-        <AppBar position="static">
+        <AppBar position="static" className={darkTheme ? 'darkMode' : 'lightMode'}>
             <Toolbar className="navbar">
                 <div className='container-logo'>
                     <Link to='/'>
@@ -63,6 +66,9 @@ const NavBar = () => {
                         <Button>
                             <Link to='*'>NotFound</Link>
                         </Button>
+                    </li>
+                    <li>
+                        <ThemeSwitch/>
                     </li>
                 </ul>
                 <Button color="inherit">Login</Button>

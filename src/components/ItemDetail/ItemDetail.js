@@ -11,7 +11,6 @@ const ItemDetail = ({ item }) => {
     const [showButton, setShowButton] = useState(false);
 
     const onAdd = (count) => {
-        console.log(`Cantidad de items a comprar: ${count}`)
         setShowButton(true);
     }
 
@@ -34,7 +33,6 @@ const ItemDetail = ({ item }) => {
                 />
                 :
                 <Button> <Link to='/cart'>Go to Cart</Link></Button>}
-                
             </figcaption>
         </div>
     )
