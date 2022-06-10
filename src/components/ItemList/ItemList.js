@@ -6,9 +6,9 @@ const ItemList = ({items}) => {
     return (
           <Grid container>
             {
-              items.map( ( item, index) => {
+              items.map( ( item ) => {
                 return(
-                  <Grid item md={3} key={index}>
+                  <Grid item md={3} key={item.id}>
                     <Item item={item}/>
                   </Grid>
                 )

@@ -6,6 +6,7 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from '../ItemCount/ItemCount';
 import { ThemeContext } from '../../context/ThemeContext';
+import { CartContext } from '../../context/CartContext'
 
 
 const Item = ({ item }) => {
@@ -15,8 +16,10 @@ const Item = ({ item }) => {
     
     const { darkTheme } = useContext(ThemeContext);
 
-    const onAdd = (count) => {
-        console.log(`Cantidad de items a comprar: ${count}`)
+    const { addProductToCart } = useContext(CartContext);
+
+    const onAdd = (quantity) => {
+        addProductToCart({ id, image, title, price, quantity });
     }
 
     return (
@@ -32,13 +35,7 @@ const Item = ({ item }) => {
                     <figcaption>
                         <p>{title}</p>
                         <p>${price}</p>
-                        <ItemCount  id={id}
-                                    image={image}
-                                    title={title}
-                                    price={price}
-                                    stock={stock}
-                                    quantity={quantity}
-                                    setQuantity={setQuantity}
+                        <ItemCount  stock={stock}
                                     onAdd={onAdd}
                                     />
                     </figcaption>
