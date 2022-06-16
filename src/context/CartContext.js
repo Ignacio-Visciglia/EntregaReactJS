@@ -7,6 +7,7 @@ const CartProvider = ({children}) => {
     const [cartListItems, setCartListItems] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalItems, setTotalItems] = useState(0)
+    
 
     const addProductToCart = (product) => {
         let isInCart = cartListItems.find(cartItem => cartItem.id === product.id)
@@ -18,15 +19,21 @@ const CartProvider = ({children}) => {
 
     const clearCart = () => {
         setCartListItems([]);
+        setTotalPrice(0);
     }
 
     const removeItem = (item) => {
-        setTotalPrice(totalPrice - item.price * item.quantity);
+        /* console.log(totalItems)
+        setTotalPrice(totalPrice - item.price * item.quantity); */
+        /* setTotalItems(totalItems - item.quantity) */
+        /* setTotalItems(0) */
         return setCartListItems(cartListItems.filter(cartItem => cartItem.id !== item.id));
     }
     
+
     const showTotalItems = () => {
-        setTotalItems(0)
+        /* setTotalItems(0) */
+        console.log('totalItemsDesdeShowTotalItems: ', totalItems)
         cartListItems.map( ( item ) => {
             return setTotalItems(totalItems + item.quantity)
         })

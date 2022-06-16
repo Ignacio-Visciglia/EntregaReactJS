@@ -1,12 +1,26 @@
 import { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import Loading from '../Loading/Loading';
-import getProducts from '../../functions/getProducts';
+/* import getProducts from '../../functions/getProducts'; */
+//FireStore
+import { collection, getDocs } from "firebase/firestore";
+import db from '../../utils/firebaseConfig';
+
 
 const ItemListContainer = ({greeting}) => {
 
   const [loader, setLoader] = useState(false);
   const [products, setProducts] = useState([]);
+
+  const getProducts = async () => {
+    const productSnapshot = await getDocs(collection(db, "products"));
+    const productList = productSnapshot.docs.map((doc)=>{
+      let product = doc.data();
+      product.id = doc.id;
+      return product;
+    })
+    return productList;
+  }
 
     //Funciones asincronas. Reemplaza el bloque then-catch-finally
     async function getProductsAsincrono() {
@@ -36,6 +50,8 @@ const ItemListContainer = ({greeting}) => {
     console.log(`Finally`);
     }) */
    
+    
+    /* getProducts(); */
     getProductsAsincrono();
     }, []);
     //Esto lo hace en Fase Montaje de su ciclo de vida

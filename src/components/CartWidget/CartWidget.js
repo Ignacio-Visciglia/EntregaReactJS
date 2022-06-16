@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 
 const CartWidget = () => {
 
-    const { cartListItems, clearCart, removeItem, showTotalItems, totalItems } = useContext(CartContext)
+    const { cartListItems, clearCart, removeItem, showTotalItems, totalItems} = useContext(CartContext)
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
