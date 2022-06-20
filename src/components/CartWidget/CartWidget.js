@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 
 const CartWidget = () => {
 
-    const { cartListItems, clearCart, removeItem, showTotalItems, totalItems} = useContext(CartContext)
+    const { cartListItems, clearCart, removeItem, showTotalItems } = useContext(CartContext)
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -18,10 +18,6 @@ const CartWidget = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    useEffect( () => {
-        showTotalItems();
-    }, [cartListItems]);
 
     return(
         <div className='cart-container-icon'>
@@ -41,7 +37,7 @@ const CartWidget = () => {
                             aria-expanded={open ? 'true' : undefined}
                             onClick={handleClick}
                         />
-                        <p>{totalItems}</p>
+                        <p>{showTotalItems()}</p>
                     </div>
                     <Menu
                         id="basic-menu"

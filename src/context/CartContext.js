@@ -6,8 +6,6 @@ const CartProvider = ({children}) => {
 
     const [cartListItems, setCartListItems] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
-    const [totalItems, setTotalItems] = useState(0)
-    
 
     const addProductToCart = (product) => {
         let isInCart = cartListItems.find(cartItem => cartItem.id === product.id)
@@ -23,20 +21,12 @@ const CartProvider = ({children}) => {
     }
 
     const removeItem = (item) => {
-        /* console.log(totalItems)
-        setTotalPrice(totalPrice - item.price * item.quantity); */
-        /* setTotalItems(totalItems - item.quantity) */
-        /* setTotalItems(0) */
+        setTotalPrice(totalPrice - item.price * item.quantity);
         return setCartListItems(cartListItems.filter(cartItem => cartItem.id !== item.id));
     }
-    
 
     const showTotalItems = () => {
-        /* setTotalItems(0) */
-        console.log('totalItemsDesdeShowTotalItems: ', totalItems)
-        cartListItems.map( ( item ) => {
-            return setTotalItems(totalItems + item.quantity)
-        })
+        return cartListItems.reduce((acc, current) => acc += current.quantity, 0)
     }
 
     const data = {
@@ -46,7 +36,6 @@ const CartProvider = ({children}) => {
         removeItem,
         totalPrice,
         showTotalItems,
-        totalItems
     }
     return(
         <CartContext.Provider value={data}>
