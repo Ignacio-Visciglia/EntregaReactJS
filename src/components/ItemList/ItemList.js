@@ -1,6 +1,6 @@
-import './ItemList.scss'
-import Item from '../Item/Item'
-import Grid from '@mui/material/Grid'
+import './ItemList.scss';
+import Item from '../Item/Item';
+import Grid from '@mui/material/Grid';
 
 const ItemList = ({items}) => {
     return (

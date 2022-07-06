@@ -2,7 +2,7 @@ import './ItemCount.scss';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 
-const ItemCount = ({ stock, onAdd}) => {
+const ItemCount = ({ stock, onAdd }) => {
 
     const [quantity, setQuantity] = useState(1);
 
@@ -20,13 +20,13 @@ const ItemCount = ({ stock, onAdd}) => {
     return(
         <>
             <div className='countItem'>
-                <Button onClick={handleDecrease}>-</Button>
+                <Button className='restButton' onClick={handleDecrease}>-</Button>
                 <p>{quantity}</p>
-                <Button onClick={handleIncrease}>+</Button>
+                <Button className='plusButton' onClick={handleIncrease}>+</Button>
             </div>
-            <Button onClick={() => {onAdd(quantity)}} variant='outlined'>ADD TO CART</Button>
+            <Button onClick={() => {onAdd(quantity)}} variant='outlined'>Add to Cart</Button>
         </>
-    );
-};
+    )
+}
 
 export default ItemCount;

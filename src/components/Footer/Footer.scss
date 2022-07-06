@@ -1,0 +1,58 @@
+@mixin flex ($direction, $justify){
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    align-items: center;
+    align-content: center;
+}
+@mixin espaciado ($margin, $padding){
+    margin: $margin;
+    padding: $padding;
+}
+$color-bor:white;
+$links:rgb(207, 6, 207);
+
+footer{
+    padding: 1rem;
+    background-color: black;
+    p{
+        margin: 0.5rem;
+    }
+    @include flex(row,space-between);
+    section{
+        margin: 0.5rem;
+        @include flex(column,center);
+        div{
+            transition: all 1s;
+            &:hover{
+                transform: scale(1.1,1.1);
+            }
+            a{
+                transition: all 1s;
+                color: $color-bor;
+                text-decoration: none;
+                &:hover{
+                    color: $links;
+                    text-decoration: underline;
+                }
+            }
+        }
+        div{
+            ul{
+                @include espaciado(0%,0%);
+                list-style-type: none;
+                li{
+                    margin: 0.5rem;
+                    display: inline-block;
+                    a{
+                        color: $color-bor;
+                        &:hover{
+                            color: $links;
+                        }
+                    }
+                }
+            }
+        }
+    } 
+}

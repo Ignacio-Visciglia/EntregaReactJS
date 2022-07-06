@@ -1,19 +1,44 @@
-.navbar{
-    ul{
-        list-style-type: none;
+.appBar{
+    width: 100%;
+    background-color: black !important;
+    .navbar{
         display: flex;
         flex-direction: row;
-    }
-    .container-logo{
-        width: 10rem;
-        img{
-            width: 100%;
+        margin: 1rem;
+        .container-logo{
+            padding-left: 0rem;
+            transition: all 1s;
+            &:hover{
+                transform: scale(1.2,1.2);
+            }
+            width: 10rem;
+            img{
+                width: 100%;
+            }
         }
-    }   
-}
-.darkMode{
-    background-color: black !important;
-}
-.lightMode{
-    background-color: white !important;
+        .itemsNavBar{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            .list{
+                list-style-type: none;
+                display: flex;
+                flex-direction: row;
+                .home{
+                    Button{
+                        .link{
+                            color: white;
+                            text-decoration: none;
+                        }
+                    }
+                }
+                .products{
+                    Button{
+                        color: white;
+                    }        
+                }
+            }
+        } 
+    }
 }

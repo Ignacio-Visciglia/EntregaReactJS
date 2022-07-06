@@ -1,3 +1,51 @@
-.cartIcon{
+.emptyCartIcon{
     color: white;
+}
+.fullCartIcon{
+    color: white;
+}
+.showTotalItems{
+    color: white;
+    font-size: small;
+    font-weight: bolder;
+}
+.fullCart{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.container-item-list-cart{
+    .subContainer-item-list-cart{
+        .item-cart-prod{
+            margin: 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-items: space-around;
+            align-items: center;
+            .cart-prod__image{
+                margin: 0.5rem;
+                img{
+                    width: 5rem;
+                }
+            }
+            .cart-prod__quantity{
+                margin: 0.5rem;
+            }
+            .cart-prod__tittle{
+                margin: 0.5rem;
+            }
+            .cart-prod__action{
+                margin: 0.5rem;
+                Button{
+                    .DeleteIcon{
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+    .emptyCartAndTotal{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

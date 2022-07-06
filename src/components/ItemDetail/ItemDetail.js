@@ -3,7 +3,7 @@ import ItemCount from '../ItemCount/ItemCount';
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import { CartContext } from '../../context/CartContext'
+import { CartContext } from '../../context/CartContext';
 
 const ItemDetail = ({ item }) => {
 
@@ -19,23 +19,25 @@ const ItemDetail = ({ item }) => {
 
     return(
         <div className="itemDetail">
-            <figure>
+            <div className='img'>
                 <img src={`/${image}`} alt=""/>
-            </figure>
-            <figcaption>
+            </div>
+            <div className='data'>
                 <p>{title}</p>
                 <p>${price}</p>
-                <span>3 cuotas sin interes de ${price / 3}</span>
+                <span>3 payments of ${(price / 3).toFixed(2)}</span>
                 {!showButton ? 
                 <ItemCount 
                     stock={stock}
                     onAdd={onAdd}
                 />
                 :
-                <Button> <Link to='/cart'>Go to Cart</Link></Button>}
-            </figcaption>
+                <Button variant='outlined'> 
+                    <Link to='/cart'>Go to Cart</Link>
+                </Button>}
+            </div>
         </div>
     )
-};
+}
 
 export default ItemDetail;
